@@ -1,0 +1,28 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: springcloud-zuul
+
+# Eureka配置：配置服务注册中心地址
+eureka:
+  client:
+    service-url:
+      # 通过注册集群里找到其他服务
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: zuul9527.com   # 默认地址
+    prefer-ip-address: true
+
+info:
+  app.name: hao-springcloud
+  company.name: 广西科技大学
+
+# 修改微服务名 设置路由
+zuul:
+  routes:
+    mydept.serviceId: springcloud-provider-dept
+    mydept.path: /mydept/**
+  ignored-services: "*"   # 不能再使用这个路径访问了  隐藏全部
+  prefix: /hao  # 设置公共的前缀

@@ -1,0 +1,4 @@
+# 项目级别的配置
+spring:
+  application:
+    name: springcloud-config-client
